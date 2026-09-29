@@ -1,0 +1,12 @@
+---
+import DefaultFooter from '@astrojs/starlight/components/Footer.astro';
+---
+<div class="docs-note">
+  <span>本手册对应 <a href="/releases/">Coopanion v0.1.7</a></span>
+  <a href="https://github.com/leafliber/coopanion-guide-website/issues">反馈文档问题 ↗</a>
+</div>
+<DefaultFooter><slot /></DefaultFooter>
+<style>
+  .docs-note { display:flex; flex-wrap:wrap; gap:.5rem 1.25rem; margin-top:3rem; padding-block:1rem; border-top:1px solid var(--sl-color-hairline-light); font-size:var(--sl-text-sm); color:var(--sl-color-gray-2); }
+  a { color:var(--sl-color-text-accent); }
+</style>

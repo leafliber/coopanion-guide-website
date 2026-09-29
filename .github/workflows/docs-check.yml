@@ -1,0 +1,64 @@
+name: Docs check
+
+on:
+  pull_request:
+    paths:
+      - 'website/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.node-version'
+      - '.npmrc'
+      - '.gitignore'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - '.github/workflows/docs-*.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'website/**'
+      - 'package.json'
+      - 'pnpm-lock.yaml'
+      - 'pnpm-workspace.yaml'
+      - '.node-version'
+      - '.npmrc'
+      - '.gitignore'
+      - 'README.md'
+      - 'CONTRIBUTING.md'
+      - '.github/workflows/docs-*.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Check, build, and validate links and search
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      ASTRO_TELEMETRY_DISABLED: '1'
+      DOCS_SITE_URL: ${{ vars.DOCS_SITE_URL }}
+    steps:
+      - name: Check out this commit
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+          submodules: false
+      - name: Set up Node.js
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version-file: .node-version
+          package-manager-cache: false
+      - name: Set up the pinned pnpm version
+        uses: pnpm/action-setup@f40ffcd9367d9f12939873eb1018b921a783ffaa # v4
+        with:
+          run_install: false
+      - name: Install documentation dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Check content, build, and validate links, assets, and search
+        run: pnpm docs:verify

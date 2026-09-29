@@ -1,0 +1,9 @@
+node_modules/
+.pnpm-store/
+.astro/
+.wrangler/
+website/dist/
+.env
+.env.*
+!.env.example
+.DS_Store

@@ -1,0 +1,57 @@
+---
+title: 让 Coo 陪你，从这里开始
+description: 安装 Coopanion、连接模型，开始聊天与语音输入，了解装扮、扩展和电脑操作。
+template: splash
+hero:
+  title: 小小桌面伴侣，从一句「你好」开始。
+  tagline: Coopanion 住在屏幕底边。和它聊聊天、换个装扮，也可以在了解权限后，请它帮忙操作电脑。
+  image:
+    alt: 桌面伴侣 Coo 的绿色应用图标
+    file: ../../assets/coo.png
+  actions:
+    - text: 下载 Coopanion
+      link: https://github.com/Pal-AI-Lab/Coopanion/releases/latest
+      icon: external
+      variant: primary
+    - text: 开始第一次对话
+      link: /start/first-chat/
+      icon: right-arrow
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+import { Image } from 'astro:assets';
+import appearance from '../../assets/appearance.png';
+
+<div class="release-note">中文使用手册 · 对应已发布的 <a href="/releases/">v0.1.7</a> · 使用前需配置模型服务</div>
+
+## 先把 Coo 接到桌面上
+
+<CardGrid>
+  <LinkCard title="Windows 安装" description="下载安装包，找到托盘中的 Coo。" href="/start/windows/" />
+  <LinkCard title="macOS 安装" description="选择芯片版本，按需设置系统权限。" href="/start/macos/" />
+  <LinkCard title="Linux 安装" description="了解 x64 安装包与 X11 的适用范围。" href="/start/linux/" />
+  <LinkCard title="首次配置" description="填好 API Key，再完成第一次文字对话。" href="/start/first-chat/" />
+</CardGrid>
+
+## 按你的习惯，相处就好
+
+<CardGrid>
+  <Card title="打字，或按住说话" icon="comment">从气泡开始聊天。语音可用 FunASR 在本机识别，识别后的文字仍会发送到你配置的模型服务。<a href="/guides/chat-voice/">了解聊天与语音 →</a></Card>
+  <Card title="换个装扮，摸摸脑袋" icon="star">选择 Coo 或 DeepSeek 大肥鱼，调整配色、大小和走动习惯。<a href="/guides/companion/">认识你的桌宠 →</a></Card>
+  <Card title="连接模型，安装扩展" icon="puzzle">更换模型连接，用 World 扩展增加能力。安装前先了解来源与权限。<a href="/guides/extensions/">管理扩展 →</a></Card>
+  <Card title="需要时，再请它动手" icon="approve-check">电脑操作会请求本轮许可。先了解截图去向、系统权限和如何停止应用。<a href="/guides/computer/">了解电脑操作 →</a></Card>
+</CardGrid>
+
+<figure>
+  <Image src={appearance} alt="上游仓库中的 Coopanion 装扮界面：左侧设置导航，右侧 Coo 配色、头饰和配件选项" widths={[720, 1280, 1920]} sizes="(max-width: 800px) 100vw, 960px" />
+  <figcaption>仓库提供的装扮界面示例，早于 v0.1.7 的形象选择更新；实际选项以当前版本为准。</figcaption>
+</figure>
+
+## 遇到问题，或想再多了解一点
+
+<CardGrid>
+  <LinkCard title="故障排查" description="桌宠不见了、没有回应、麦克风不能用，从症状开始找。" href="/troubleshooting/common/" />
+  <LinkCard title="权限、费用与数据" description="了解哪些内容会联网，以及备份和卸载前要做什么。" href="/safety/permissions/" />
+  <LinkCard title="快捷键与交互" description="找到打字、左 Option、设置和托盘入口。" href="/reference/controls/" />
+  <LinkCard title="参与开发" description="从源码启动，理解 Coopanion 与 Cortico 的边界。" href="/develop/source/" />
+</CardGrid>

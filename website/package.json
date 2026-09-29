@@ -1,0 +1,29 @@
+{
+  "name": "@coopanion/docs",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build && node scripts/build-search.mjs",
+    "preview": "astro preview --host 127.0.0.1",
+    "check": "astro check && markdownlint-cli2 && node --test scripts/site-url.test.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:search": "node scripts/check-search.mjs",
+    "cf:preview": "wrangler dev --local --ip 127.0.0.1",
+    "deploy": "node scripts/validate-deploy.mjs && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "7.3.1",
+    "@astrojs/starlight": "0.42.4",
+    "astro": "7.3.5",
+    "sharp": "0.35.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "markdownlint-cli2": "0.23.3",
+    "pagefind": "1.5.2",
+    "parse5": "8.0.0",
+    "typescript": "5.9.3",
+    "wrangler": "4.143.0"
+  }
+}
