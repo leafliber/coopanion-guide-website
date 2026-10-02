@@ -55,10 +55,24 @@ macOS 修改输入监控、辅助功能或屏幕录制权限后，从菜单栏�
 
 先查看「扩展」页的状态，再确认是否已重启进程。如果是 World，还要到「World 总览」检查是否激活。加载失败时按卡片给出的原因处理，见[扩展安装与管理](/guides/extensions/)。
 
+## 电脑操作没有再询问，或拒绝后仍能看屏幕
+
+到高级模式 →「电脑操作」检查「什么时候先问你」。默认 `ask-each-turn` 每轮首次看屏幕或操作前询问；`ask-before-acting` 和 `ask-once` 只问键鼠操作，截图和列窗口无需这层许可。`ask-once` 的许可有效期内、以及 `never-ask` 档位下，也不会重复询问。
+
+想恢复默认行为，选回 `ask-each-turn`。若想禁止截图，仅关闭「允许操作鼠标键盘」不够，需要停用整个电脑操作 World。步骤与拒绝范围见[电脑操作与授权](/guides/computer/)。
+
+## 改了人设却没有生效
+
+在「系统提示词」保存编辑后，还需点「重载当前 session」。仅修改文件不会替换当前会话已加载的内容。先确认保存成功，再用一条简单消息检查称呼或语气，详见[系统提示词与人设](/guides/personality/)。
+
+## 没有看到更新提醒
+
+先看设置左上角的当前版本；v0.1.9 之前没有这个入口。新版查询 GitHub 失败时也只显示当前版本，可以手动打开官方 Release 核对。更新提醒只提供下载链接，升级步骤见[更新记录与文档版本](/releases/)。
+
 ## 反馈时提供什么
 
 向 [项目 Issue](https://github.com/Pal-AI-Lab/Coopanion/issues)提供系统版本、Coopanion 版本、复现步骤、预期结果与实际结果。Linux 加上发行版、桌面环境、X11 / Wayland 信息。
 
 高级模式的「对话」和「运行诊断」可帮助定位问题。上传截图、日志或诊断包前，检查并移除 API Key、对话、路径中的个人信息和屏幕私密内容。不要直接公开整个数据目录。
 
-依据：[托盘与窗口行为](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/app/main.cjs)、[语音状态面板](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-desktop-pet/src/console/client.ts)、[模型下载实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-desktop-pet/src/runtime/store.ts)。
+依据：[托盘与窗口行为](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/app/main.cjs)、[语音状态面板](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-desktop-pet/src/console/client.ts)、[模型下载实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-desktop-pet/src/runtime/store.ts)。

@@ -3,7 +3,7 @@ title: 快捷键与交互方式
 description: 查找左 Option、左 Alt 说话键，桌宠鼠标操作、托盘菜单与设置入口。
 ---
 
-这页用于快速查找默认操作。以下以 v0.1.7 的新安装默认设置为准；已经改过的说话键和悬停按钮以你的设置为准。
+这页用于快速查找默认操作。以下以 v0.1.10 的新安装默认设置为准；已经改过的说话键和悬停按钮以你的设置为准。
 
 ## 桌宠与输入
 
@@ -34,16 +34,19 @@ description: 查找左 Option、左 Alt 说话键，桌宠鼠标操作、托盘�
 
 ## 设置窗口位置
 
-普通模式提供「开始」「习惯」「装扮」「语音输入」「用量与成本」。
+普通模式提供「开始」「习惯」「装扮」「语音输入」「系统提示词」「用量与成本」。从 v0.1.9 起，修改人设不需要切到高级模式。
 
 | 页面 | 常用操作 |
 | --- | --- |
 | 开始 | 连接模型、测试连接、显示桌宠、重新运行使用引导 |
-| 习惯 | 修改称呼、走动、大小、音效和悬停按钮 |
+| 习惯 | 修改称呼、走动、大小、音效、悬停按钮和匿名使用统计开关 |
 | 装扮 | 切换形象、配色和配件 |
 | 语音输入 | 总开关、识别引擎、模型下载、麦克风、收音方式和说话键 |
+| 系统提示词 | 编辑人设；Ctrl+S 保存（Mac 为 Command+S），再点「重载当前 session」生效 |
 | 用量与成本 | 查看应用记录的模型用量与成本 |
+
+「系统提示词」的完整操作见[人设与系统提示词](/guides/personality/)。左上角字标下显示当前版本；检测到更新的正式 Release 时，会显示下载链接。
 
 左栏底部的「高级模式」会显示对话、World、模型、扩展、记忆和运行诊断等入口。「回到普通模式」可收起这些页面，应用会记住模式选择。
 
-依据：[设置窗口页面表](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/console/main.ts)、[托盘菜单](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/app/main.cjs)、[桌宠交互实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-desktop-pet/web/pet-app.js)。
+依据：[设置窗口页面表](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/console/main.ts)、[版本提示](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/console/features/release.ts)、[托盘菜单](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/app/main.cjs)、[桌宠交互实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-desktop-pet/web/pet-app.js)。

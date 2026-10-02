@@ -16,7 +16,7 @@ description: 了解应用与文档的贡献入口、实际检查命令，以及�
 
 ## 应用代码检查
 
-在完成[源码环境准备](/develop/source/)后，v0.1.7 应用 CI 按下面顺序执行：
+在完成[源码环境准备](/develop/source/)后，v0.1.10 应用 CI 按下面顺序执行：
 
 ```bash
 pnpm install --frozen-lockfile
@@ -38,7 +38,7 @@ CI 覆盖 Windows、macOS 和 Ubuntu。涉及系统权限、麦克风、窗口�
 
 ## 应用如何发布
 
-v0.1.7 的[应用发布工作流](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/.github/workflows/release.yml)由推送 `v*` 标签触发。它在对应平台构建 Windows、macOS 两种架构、Linux 的安装文件，校验文件齐全后生成 SHA-256 校验清单，并以 `docs/releases/<标签>.md` 作为 Release 正文发布。
+v0.1.10 的[应用发布工作流](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/.github/workflows/release.yml)由推送 `v*` 标签触发。它在对应平台构建 Windows、macOS 两种架构、Linux 的安装文件，校验文件齐全后生成 SHA-256 校验清单，并以 `docs/releases/<标签>.md` 作为 Release 正文发布。
 
 这是应用仓库维护者的发布流程，不是网站部署命令。发布前需确认版本号、说明和检查结果一致；该版本的发布工作流自身没有串联应用 CI 的全部检查，不应把“安装包构建成功”当成“所有测试已通过”。
 
@@ -48,4 +48,4 @@ v0.1.7 的[应用发布工作流](https://github.com/Pal-AI-Lab/Coopanion/blob/v
 
 产品问题请到 [Coopanion Issues](https://github.com/Pal-AI-Lab/Coopanion/issues)。写清楚预期结果、实际结果和最短复现步骤；提供报错文字前去掉 Key、账号、个人路径和对话内容。
 
-更细的工程约定仍见[应用开发文档](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/docs/DEVELOPMENT.md)与[项目结构](/develop/architecture/)。上游旧文档中要求将用户操作更新进 README 的做法，不是本站正文的维护方式。
+更细的工程约定仍见[应用开发文档](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/docs/DEVELOPMENT.md)与[项目结构](/develop/architecture/)。上游旧文档中要求将用户操作更新进 README 的做法，不是本站正文的维护方式。

@@ -22,7 +22,16 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 import { Image } from 'astro:assets';
 import appearance from '../../assets/appearance.png';
 
-<div class="release-note">中文使用手册 · 对应已发布的 <a href="/releases/">v0.1.7</a> · 使用前需配置模型服务</div>
+<div class="release-note">中文使用手册 · 已核验 <a href="/releases/">v0.1.10</a> · 使用前需配置模型服务</div>
+
+## 已经在用 Coo？看看新版设置
+
+<CardGrid>
+  <LinkCard title="匿名使用统计" description="v0.1.10 默认开启。了解统计内容，以及在「习惯」页关闭的方法。" href="/safety/permissions/#匿名使用统计" />
+  <LinkCard title="让 Coo 更懂你的偏好" description="在普通模式编辑系统提示词，或和 Coo 商量性格、说话方式与称呼。" href="/guides/personality/" />
+  <LinkCard title="调整电脑操作的询问频率" description="比较四档授权，分清看屏幕和动鼠标键盘的许可范围。" href="/guides/computer/" />
+  <LinkCard title="查看版本与升级" description="找到设置中的更新提醒，备份数据，再下载适合你的安装包。" href="/releases/" />
+</CardGrid>
 
 ## 先把 Coo 接到桌面上
 
@@ -39,7 +48,7 @@ import appearance from '../../assets/appearance.png';
   <Card title="打字，或按住说话" icon="comment">从气泡开始聊天。语音可用 FunASR 在本机识别，识别后的文字仍会发送到你配置的模型服务。<a href="/guides/chat-voice/">了解聊天与语音 →</a></Card>
   <Card title="换个装扮，摸摸脑袋" icon="star">选择 Coo 或 DeepSeek 大肥鱼，调整配色、大小和走动习惯。<a href="/guides/companion/">认识你的桌宠 →</a></Card>
   <Card title="连接模型，安装扩展" icon="puzzle">更换模型连接，用 World 扩展增加能力。安装前先了解来源与权限。<a href="/guides/extensions/">管理扩展 →</a></Card>
-  <Card title="需要时，再请它动手" icon="approve-check">电脑操作会请求本轮许可。先了解截图去向、系统权限和如何停止应用。<a href="/guides/computer/">了解电脑操作 →</a></Card>
+  <Card title="需要时，再请它动手" icon="approve-check">默认每轮操作前询问，也可在设置中调整授权档位。先了解截图去向、系统权限和如何停止应用。<a href="/guides/computer/">了解电脑操作 →</a></Card>
 </CardGrid>
 
 <figure>

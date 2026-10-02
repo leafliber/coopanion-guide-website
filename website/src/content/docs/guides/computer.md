@@ -1,9 +1,9 @@
 ---
 title: 电脑操作与授权
-description: 让 Coo 查看主屏幕、操作鼠标键盘，了解逐轮询问、手动接管和关闭电脑操作的边界。
+description: 让 Coo 查看主屏幕、操作鼠标键盘，选择四档询问方式，并了解手动接管和关闭电脑操作的边界。
 ---
 
-这页帮助你让 Coo 完成一个可观察的小任务，并说明如何拒绝授权或停止使用电脑操作。适用于 v0.1.7。
+这页帮助你让 Coo 完成一个可观察的小任务，并说明如何选择授权方式、拒绝请求或停止使用电脑操作。适用于 v0.1.10；四档询问方式从 v0.1.8 起提供。
 
 ## 开始前
 
@@ -25,16 +25,33 @@ sudo apt install xdotool zenity
 
 1. 打开一个没有敏感内容的窗口，例如空白文本编辑器。
 2. 对 Coo 说清楚目标，例如「在这个空白文档里输入一行你好，先不要保存」。
-3. 当它询问「想用你的电脑：看屏幕、动鼠标和键盘。这一次可以吗？」时，确认当前屏幕适合分享，再点「可以」。不希望继续就选「这次不行」。
+3. 保持默认的 `ask-each-turn` 档位。当它询问「想用你的电脑：看屏幕、动鼠标和键盘。这一次可以吗？」时，确认当前屏幕适合分享，再点「可以」。不希望继续就选「这次不行」。
 4. 留意屏幕上的实际动作与结果。任务完成后自己检查内容是否正确。
 
 点了许可但没有动作时，先检查是否仍在使用鼠标键盘、系统权限是否生效，以及模型是否能够接收图片。必要时查看[故障排查](/troubleshooting/common/)。
 
-## 许可按一轮计算
+## 选择什么时候先问你
 
-内置电脑操作 World（与桌面环境交互的模块）在**每轮第一次调用受许可约束的工具前询问一次**，包括截图、列窗口和键鼠操作。不是每次点击、每张截图都会重新弹框。
+在设置窗口切换到「高级模式」，打开「电脑操作」，找到「什么时候先问你」。修改后立即生效：
 
-本轮选择拒绝后，后续电脑操作工具也会被拒绝；下一轮再用时重新询问。没有及时回应也不会视作同意。没有可用的桌宠气泡时，会尝试用系统对话框询问。
+| 档位 | 截图、列窗口前 | 操作鼠标键盘前 |
+| --- | --- | --- |
+| `ask-each-turn`（默认） | 每轮第一次使用电脑操作时询问 | 与截图共用本轮许可，不会每个动作重复问 |
+| `ask-before-acting` | 不询问 | 每轮第一次动手时询问 |
+| `ask-once` | 不询问 | 同意后在指定时长内不再询问，过期后下次动手再问 |
+| `never-ask` | 不询问 | 不询问 |
+
+选择 `ask-once` 后，「同意管多久」默认是 **30 分钟**，可设为 1–1440 分钟。这段许可可以跨轮使用；即使还在同一轮，超过有效期也会在下次动手前重新询问。
+
+:::caution[先看清楚截图权限]
+除默认档位以外，其他三档都允许 Coo 在不询问的情况下截图和列窗口。需要先确认屏幕内容是否适合分享时，保留 `ask-each-turn`。这些设置控制内置电脑操作模块的询问，不替代系统权限。
+:::
+
+## 拒绝与超时会怎样
+
+默认档位按轮复用许可，不是每次点击、每张截图都重新弹框。本轮选择拒绝后，仍需该许可的调用会被拒绝；下一轮需要时再问。在 `ask-before-acting` 和 `ask-once` 档位中，拒绝键鼠操作不会同时禁止截图和列窗口。
+
+询问等待约 60 秒，没有回应不会视作同意。没有可用的桌宠气泡时，会尝试用系统对话框询问。
 
 操作类工具默认在动作后附上新的截图，但模型也可以请求不附图。截图及回执可能继续留在上下文里，不能把关闭窗口理解为已经删除之前发送的内容。
 
@@ -57,4 +74,4 @@ macOS 也可在系统隐私设置中撤销对应权限；更改后重启应用�
 内置提示词要求模型把登录、密码、验证码和支付交给使用者，并在发送、删除、提交等操作前另行询问。这是对模型的行为要求，不是每个动作都有独立的强制确认锁。请自己完成敏感步骤，核对最终提交内容。
 :::
 
-依据：[逐轮许可与工具实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-cua/src/world.ts)、[让位机制](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-cua/src/engine-child.ts)、[Linux 工具实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-cua/src/engine/linux.ts)、[电脑操作设置](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-cua/src/config.ts)、[暂停语义](https://github.com/Pal-AI-Lab/Cortico/blob/fb710ef01755a170186a8c940a0c9fd19015de0f/src/core/bus.ts)。
+依据：[许可与工具实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-cua/src/world.ts)、[让位机制](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-cua/src/engine-child.ts)、[Linux 工具实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-cua/src/engine/linux.ts)、[四档询问设置](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-cua/src/config.ts)、[暂停语义](https://github.com/Pal-AI-Lab/Cortico/blob/9a1d562201413e6751a17f732d972ef19b86b466/src/core/bus.ts)。

@@ -12,14 +12,14 @@ description: 更换模型服务、更新 API Key，理解连接测试和模型�
 3. 填入该服务的 API Key，点「保存并开始」。
 4. 等待测试成功，确认页面显示当前服务和模型。
 
-v0.1.7 的快捷选择包括 DeepSeek、通义千问、Kimi、智谱 GLM、豆包、百度千帆、MiniMax、阶跃星辰和 OpenRouter。每项的「去……申请 Key」链接指向对应服务的平台。
+v0.1.10 的快捷选择包括 DeepSeek、通义千问、Kimi、智谱 GLM、豆包、百度千帆、MiniMax、阶跃星辰和 OpenRouter。每项的「去……申请 Key」链接指向对应服务的平台。
 
 各服务保存各自的连接配置和 Key。只修改当前服务的模型时，输入框允许留空沿用已保存的 Key；切换到其他服务时，按界面要求填写对应 Key。Key 保存方式见[权限、费用与隐私](/safety/permissions/)。
 
 :::note[预设名称不是服务可用性保证]
 应用的模型名称与候选项是版本内的预设。模型可能受账户开通状态、地域或服务端变更影响。以模型服务官方文档为准，不要用另一家的 Key 测试当前连接。
 
-v0.1.7 的 Provider 源码明确说明：除 DeepSeek 外，其余这些服务按官方文档接入，尚未逐家使用真实 Key 验证。本手册也未使用真实 Key 执行服务验证。
+v0.1.10 的 Provider 源码明确说明：除 DeepSeek 外，其余这些服务按官方文档接入，尚未逐家使用真实 Key 验证。本手册也未使用真实 Key 执行服务验证。
 :::
 
 ## 连接测试能说明什么
@@ -27,6 +27,18 @@ v0.1.7 的 Provider 源码明确说明：除 DeepSeek 外，其余这些服务�
 「测试连接」有助于检查当前保存的连接是否能得到响应。实际对话、工具调用和图片输入仍可能因模型能力或服务差异失败。
 
 若普通聊天正常、电脑操作却不能理解截图，先核查该模型是否支持图片输入，再看[电脑操作与授权](/guides/computer/)。不要只根据模型名称或配色判断它能否看图。
+
+## 在高级模式获取模型列表
+
+需要查看服务返回的模型目录时，打开左栏底部的「高级模式」→「模型」，选择对应的连接卡片。
+
+1. 检查「连接」中的 API 地址和 Key。
+2. 在「模型与生成」中点「获取模型列表」。成功后会显示「取到 N 个模型」，有结果时出现下拉选单。
+3. 从选单中选一个模型，或在「模型」字段手动填写服务支持的名称。获取列表本身不会替你切换模型。
+4. 选择目录中的模型时，应用会在目录提供信息的情况下填入上下文上限和图片能力。缺少上下文信息时，按服务商文档填写。
+5. 点「保存」写入配置。若要启用另一张连接卡片，再点该卡片的「连接」按钮（悬停说明为「设为当前供应商」），确认它显示「当前模型」。
+
+测试连接和获取列表会使用表单里正在编辑的地址与 Key，可以在保存前执行；测试成功并不表示改动已经保存。取到空列表或报错时，仍可核对服务端支持的模型名称后手动输入。
 
 ## 接入其他服务
 
@@ -40,4 +52,4 @@ v0.1.7 的 Provider 源码明确说明：除 DeepSeek 外，其余这些服务�
 
 遇到认证失败、余额不足、模型不存在或超时，按[模型连接失败或没有回应](/troubleshooting/common/#模型连接失败或没有回应)排查。切换服务前，先记下原服务和模型名称，方便恢复。
 
-依据：[v0.1.7 服务预设与验证说明](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-provider-coo/src/vendors.ts)、[连接保存与测试流程](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-provider-coo/src/connect.ts)。
+依据：[v0.1.10 服务预设与验证说明](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-provider-coo/src/vendors.ts)、[连接保存与测试流程](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-provider-coo/src/connect.ts)、[随版本锁定的模型编辑器](https://github.com/Pal-AI-Lab/Cortico/blob/9a1d562201413e6751a17f732d972ef19b86b466/src/web/client/features/providers/detail.ts)。

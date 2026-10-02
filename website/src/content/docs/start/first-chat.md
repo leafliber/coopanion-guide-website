@@ -1,13 +1,19 @@
 ---
 title: 首次配置与第一次对话
-description: 找到设置入口，填入 API Key，确认模型连接并完成第一轮文字聊天。
+description: 跟随首次引导，连接模型并完成第一轮文字聊天，再和 Coo 商量人设。
+prev: false
+next:
+  label: 文字聊天与语音输入
+  link: /guides/chat-voice/
 ---
 
 这页帮助你从刚安装完成走到收到第一条回复。准备一家模型服务的 API Key，并确保电脑能访问该服务。
 
 ## 跟随桌宠引导
 
-首次启动后，Coo 会在屏幕底边用气泡询问称呼、走动习惯、模型服务和 API Key，然后提供语音模型下载入口。
+首次启动后，Coo 会在屏幕底边逐步介绍自己：确认称呼和认识 Coopanion 的来源，选择走动习惯，连接模型，再介绍语音输入、按钮和人设入口。
+
+v0.1.10 新增的「你是从哪里认识我的？」可以选择「不告诉你」跳过作答。来源选项用于匿名使用统计；统计开关在设置 →「习惯」，具体范围见[匿名使用统计](/safety/permissions/#匿名使用统计)。
 
 点气泡中的选项即可继续。不想立即使用语音，可以先完成模型连接，稍后再到「语音输入」下载识别模型。气泡右上角的关闭按钮会结束引导；设置窗口「开始」页的「使用引导」可以重新打开。
 
@@ -31,10 +37,16 @@ API Key 是模型平台的调用凭据，不是聊天网站的登录密码。调
 
 这一步不需要下载语音识别模型。确认文字能正常使用后，再按[文字聊天与语音输入](/guides/chat-voice/)配置麦克风和说话键。
 
+## 和 Coo 商量人设
+
+完整走完引导并连上模型后，应用会提示 Coo 和你商量性格、说话方式与彼此的称呼。你也可以直接说：「以后回答简短一点，像朋友聊天，把这个偏好记进人设。」
+
+普通模式的「系统提示词」页可以查看和修改人设。修改后需要保存，再重载当前会话；具体步骤见[人设与系统提示词](/guides/personality/)。提前关闭引导不会触发这段主动沟通，但仍可自行聊天或编辑。
+
 ## 没有收到回复
 
 - 「开始」显示「还没连上模型」：检查服务、模型和 Key，再测试连接。
 - 显示「暂停中」：使用左栏底部的「继续」。
 - 连接测试成功但对话报错：保留不含 Key 的错误提示，按[模型连接失败或没有回应](/troubleshooting/common/#模型连接失败或没有回应)逐项排查。一次连接成功不代表该服务的所有功能都已验证。
 
-依据：[v0.1.7 首次引导](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/core/guide.ts)、[「开始」页](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/console/features/home/index.ts)。
+依据：[v0.1.10 首次引导](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/core/guide.ts)、[「开始」页](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/console/features/home/index.ts)、[引导结束事件](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/core/companion.ts)。

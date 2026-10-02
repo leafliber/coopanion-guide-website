@@ -38,8 +38,14 @@ description: 找到桌宠菜单，调整走动和大小，切换 Coo 与 DeepSee
 
 如果想让桌宠少走动，优先调整行为模式；「暂停」涉及消息处理，不能当作所有后台活动或电脑操作的紧急停止开关，详见[电脑操作与授权](/guides/computer/)。
 
+## 调整性格和称呼
+
+想改变 Coo 的性格、口癖或回答长度，打开普通模式的「系统提示词」，或直接和 Coo 商量。它的人设保存在 `CONSTITUTION.md` 中，保存与生效步骤见[人设与系统提示词](/guides/personality/)。
+
+Coo 用来称呼你的名字仍在「习惯」→「怎么称呼你」中修改。这里也提供「匿名使用统计」开关；收集范围见[匿名使用统计](/safety/permissions/#匿名使用统计)。
+
 ## 装扮页打不开
 
 若显示「桌宠还没准备好，稍后再来」，先检查桌宠是否已经启动，并尝试从「开始」页显示桌宠。仍无法载入时，重启应用，按[故障排查](/troubleshooting/common/)记录脱敏后的错误信息。
 
-依据：[装扮页实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-desktop-pet/web/dress.js)、[桌宠交互与菜单](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-desktop-pet/web/pet-app.js)。
+依据：[装扮页实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-desktop-pet/web/dress.js)、[桌宠交互与菜单](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-desktop-pet/web/pet-app.js)、[习惯页](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/console/features/pet/index.ts)。

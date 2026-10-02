@@ -53,4 +53,4 @@ macOS 的全局说话键需要「输入监控」权限。Linux 的 Wayland 限�
 
 看不到电平变化、识别服务未就绪或说话键无效时，转到[麦克风、快捷键或语音输入不可用](/troubleshooting/common/#麦克风快捷键或语音输入不可用)。Windows 还可选择系统自带识别引擎，但它依赖系统已安装的语言识别组件。
 
-依据：[语音面板与实际状态文案](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-desktop-pet/src/console/client.ts)、[默认按键与平台实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.7/packages/cortico-world-desktop-pet/src/asr/hotkey.ts)。
+依据：[语音面板与实际状态文案](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-desktop-pet/src/console/client.ts)、[默认按键与平台实现](https://github.com/Pal-AI-Lab/Coopanion/blob/v0.1.10/packages/cortico-world-desktop-pet/src/asr/hotkey.ts)。

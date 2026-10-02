@@ -23,7 +23,7 @@ export default defineConfig({
         { slug: 'start/windows' }, { slug: 'start/macos' }, { slug: 'start/linux' }, { slug: 'start/first-chat' },
       ] },
       { label: '使用指南', items: [
-        { slug: 'guides/chat-voice' }, { slug: 'guides/companion' }, { slug: 'guides/models' },
+        { slug: 'guides/chat-voice' }, { slug: 'guides/companion' }, { slug: 'guides/personality' }, { slug: 'guides/models' },
         { slug: 'guides/extensions' }, { slug: 'guides/computer' },
       ] },
       { label: '安全与数据', items: [{ slug: 'safety/permissions' }, { slug: 'safety/data' }] },
